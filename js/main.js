@@ -89,6 +89,9 @@ const lineChartOptions = {
 };
 
 $(function () {
+  // Initialize score chart
+  initializeScore();
+
   // Calculate data
   calculateData();
 
@@ -97,9 +100,6 @@ $(function () {
 
   // Initialize line chart
   window.lineChart = new Chart(chartElement, lineChartOptions);
-
-  // Initialize score chart
-  initializeScore();
 
   // Initialize sliders
   initializeSliders();
@@ -131,7 +131,7 @@ function initializeSliders() {
 function initializeScore() {
   const Gradient =
     '<defs><linearGradient id="gradient" x1="50%" y1="-20%" x2="0%" y2="0%" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffc200"/><stop offset="50%" stop-color="#63E263"/><stop offset="100%" stop-color="#00c200"/></linearGradient></defs>';
-  const bar = new ProgressBar.Circle('#score-chart', {
+  window.score = new ProgressBar.Circle('#score-chart', {
     color: 'url(#gradient)',
     // This has to be the same size as the maximum width to
     // prevent clipping
@@ -158,10 +158,10 @@ function initializeScore() {
     },
     svgStyle: null,
   });
-  bar.svg.insertAdjacentHTML('afterbegin', Gradient);
-  bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-  bar.text.style.fontSize = '2rem';
-  bar.animate(0.8); // Number from 0.0 to 1.0
+  window.score.svg.insertAdjacentHTML('afterbegin', Gradient);
+  window.score.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+  window.score.text.style.fontSize = '2rem';
+  window.score.animate(0);
 }
 
 function updateChart() {
@@ -213,13 +213,17 @@ function calculateData() {
     otherAssetsData.push(getDataWithYear(yearNow + i, otherAssets));
   }
 
+  // Update score
   const calculation1 =
     income * contribution * yearsDifference * (rateOfReturn + 1);
   const calculation2 =
     socialSecurity * 12 * yearsDifference -
     healthcare * 12 * yearsDifference +
     otherAssets;
-  const score = calculation1 + calculation2;
+
+  const moneyPerAge = 15000;
+  const score = (calculation1 + calculation2) / (retirementAge * moneyPerAge);
+  window.score.animate(score > 1 ? 1 : score);
 
   lineChartData.datasets[0].data = otherAssetsData;
   lineChartData.datasets[1].data = socialSecurityData;
