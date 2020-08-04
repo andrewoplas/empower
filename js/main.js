@@ -7,7 +7,7 @@ const context = document.getElementById('line-stack-chart').getContext('2d');
 // Fixed values
 const socialSecurity = 1200;
 const healthcare = 960;
-const otherAssets = 100000;
+const otherAssets = 50000;
 
 // Inputs
 const age = 27;
@@ -222,8 +222,11 @@ function calculateData() {
     otherAssets;
 
   const moneyPerAge = 15000;
-  const score = (calculation1 + calculation2) / (retirementAge * moneyPerAge);
-  window.score.animate(score > 1 ? 1 : score);
+  let score = (calculation1 + calculation2) / (retirementAge * moneyPerAge);
+
+  if (score > 1) score = 1;
+  if (score < 0) score = 0;
+  window.score.animate(score);
 
   lineChartData.datasets[0].data = otherAssetsData;
   lineChartData.datasets[1].data = socialSecurityData;
