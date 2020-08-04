@@ -8,6 +8,8 @@
     <title>Empower</title>
     <!---IcoFont Icon font-->
     <link rel="stylesheet" href="css/icofont.min.css" />
+    <!---Range slider-->
+    <link rel="stylesheet" href="css/rangeslider.css" />
     <!-- Bootsrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- BS nav CSS -->
@@ -163,11 +165,95 @@
                             style="
                               min-height: 200px;
                               background: #ffffff;
-                              text-align: center;
                               margin-bottom: 20px;
+                              padding: 10px;
                             "
                           >
-                            Slider placeholder
+                            <div class="row">
+                              <div class="col-md-3">
+                                <label for="income">Income</label>
+                                <input type="text" id="income" value="140000" />
+                              </div>
+                              <div class="col-md-3">
+                                <div class="slider-container">
+                                  <label for="contribution">Contribution</label>
+                                  <input
+                                    type="range"
+                                    id="contribution"
+                                    min="1"
+                                    max="100"
+                                    value="2"
+                                  />
+                                  <p class="mt-2 mb-0">
+                                    Value: <b class="value"></b>%
+                                  </p>
+                                </div>
+                                <div class="mt-4 slider-container">
+                                  <label for="retirementAge"
+                                    >Retirement Age</label
+                                  >
+                                  <input
+                                    type="range"
+                                    id="retirementAge"
+                                    min="1"
+                                    max="100"
+                                    value="67"
+                                  />
+                                  <p class="mt-2 mb-0">
+                                    Value: <b class="value"></b>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="slider-container">
+                                  <label for="employerMatch"
+                                    >Employer Match</label
+                                  >
+                                  <input
+                                    type="range"
+                                    id="employerMatch"
+                                    min="1"
+                                    max="100"
+                                    value="2"
+                                  />
+                                  <p class="mt-2 mb-0">
+                                    Value: <b class="value"></b>%
+                                  </p>
+                                </div>
+                                <div class="mt-4 slider-container">
+                                  <label for="lifeExpectancy"
+                                    >Life Expectancy</label
+                                  >
+                                  <input
+                                    type="range"
+                                    id="lifeExpectancy"
+                                    min="1"
+                                    max="100"
+                                    value="94"
+                                  />
+                                  <p class="mt-2 mb-0">
+                                    Value: <b class="value"></b>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="slider-container">
+                                  <label for="rateOfReturn"
+                                    >Rate Of Return</label
+                                  >
+                                  <input
+                                    type="range"
+                                    id="rateOfReturn"
+                                    min="1"
+                                    max="100"
+                                    value="7"
+                                  />
+                                  <p class="mt-2 mb-0">
+                                    Value: <b class="value"></b>%
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div class="retirement__head__main">
                             <div class="row">
@@ -189,14 +275,13 @@
                             class="retirement__chart"
                             style="
                               height: 200px;
-                              background: #f2f2f2;
                               text-align: center;
+                              position: relative;
                             "
                           >
                             <canvas
                               id="line-stack-chart"
-                              width="100%"
-                              height="100%"
+                              height="80px"
                             ></canvas>
                           </div>
                         </div>
@@ -305,8 +390,10 @@
     <!-- BS-nav min js -->
     <script src="js/bsnav.min.js"></script>
     <!-- Chart min js -->
-    <script src="node_modules/chart.js/dist/Chart.bundle.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <!-- Chart min js -->
+    <script src="js/rangeslider.min.js"></script>
     <!-- Custom -->
-    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>
