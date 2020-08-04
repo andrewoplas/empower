@@ -13,7 +13,7 @@ const otherAssets = 100000;
 const age = 27;
 
 /******************** Chart Configurations ********************/
-const data = {
+const lineChartData = {
   // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
@@ -30,7 +30,6 @@ const data = {
       borderWidth: 0,
       borderColor: 'transparent',
     },
-
     {
       label: 'Estimated Balance',
       data: [],
@@ -41,9 +40,9 @@ const data = {
   ],
 };
 
-const chartOptions = {
+const lineChartOptions = {
   type: 'line',
-  data: data, // Must be overwritten
+  data: lineChartData, // Must be overwritten
   options: {
     responsive: true,
     elements: {
@@ -94,12 +93,20 @@ $(function () {
   calculateData();
 
   // Update chart options
-  chartOptions.data = data;
+  lineChartOptions.data = lineChartData;
 
-  // Initialize chart
-  window.lineChart = new Chart(chartElement, chartOptions);
+  // Initialize line chart
+  window.lineChart = new Chart(chartElement, lineChartOptions);
+
+  // Initialize score chart
+  initializeScore();
 
   // Initialize sliders
+  initializeSliders();
+});
+
+/******************** Functions ********************/
+function initializeSliders() {
   $('input[type="range"]').rangeslider({
     polyfill: false,
 
@@ -115,14 +122,49 @@ $(function () {
       updateChart();
     },
   });
-});
+}
+
+function initializeScore() {
+  const Gradient =
+    '<defs><linearGradient id="gradient" x1="50%" y1="-20%" x2="0%" y2="0%" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#ffc200"/><stop offset="50%" stop-color="#63E263"/><stop offset="100%" stop-color="#00c200"/></linearGradient></defs>';
+  const bar = new ProgressBar.Circle('#score-chart', {
+    color: 'url(#gradient)',
+    // This has to be the same size as the maximum width to
+    // prevent clipping
+    strokeWidth: 6,
+    trailColor: '#eee',
+    trailWidth: 6,
+    easing: 'easeInOut',
+    duration: 1400,
+    text: {
+      autoStyleContainer: false,
+    },
+    // Set default step function for all animate calls
+    step: function (state, circle) {
+      const value = Math.round(circle.value() * 100);
+      if (value === 0) {
+        circle.setText('');
+      } else {
+        const text =
+          '<span class="score-label">Your score</span><span class="score-value">' +
+          value +
+          '</span>';
+        circle.setText(text);
+      }
+    },
+    svgStyle: null,
+  });
+  bar.svg.insertAdjacentHTML('afterbegin', Gradient);
+  bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+  bar.text.style.fontSize = '2rem';
+  bar.animate(0.8); // Number from 0.0 to 1.0
+}
 
 function updateChart() {
   calculateData();
   window.lineChart.update();
 }
 
-/******************** Helper Functions ********************/
 function getGradientColor(color1, color2) {
   const gradientStroke = context.createLinearGradient(500, 0, 100, 0);
   gradientStroke.addColorStop(0, color1);
@@ -166,7 +208,15 @@ function calculateData() {
     otherAssetsData.push(getDataWithYear(yearNow + i, otherAssets));
   }
 
-  data.datasets[0].data = otherAssetsData;
-  data.datasets[1].data = socialSecurityData;
-  data.datasets[2].data = estimatedBalanceData;
+  const calculation1 =
+    income * contribution * yearsDifference * (rateOfReturn + 1);
+  const calculation2 =
+    socialSecurity * 12 * yearsDifference -
+    healthcare * 12 * yearsDifference +
+    otherAssets;
+  const score = calculation1 + calculation2;
+
+  lineChartData.datasets[0].data = otherAssetsData;
+  lineChartData.datasets[1].data = socialSecurityData;
+  lineChartData.datasets[2].data = estimatedBalanceData;
 }

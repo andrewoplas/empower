@@ -316,11 +316,21 @@
                         class="retirement__score"
                         style="
                           height: 200px;
-                          background: #f2f2f2;
                           text-align: center;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
                         "
                       >
-                        Retirement score placeholder
+                        <div
+                          id="score-chart"
+                          style="
+                            margin: 20px;
+                            width: 180px;
+                            height: 180px;
+                            position: relative;
+                          "
+                        ></div>
                       </div>
                       <div class="right__chart em__shadow text-center">
                         <p>
@@ -393,6 +403,8 @@
     <!-- Chart min js -->
     <script src="js/chart.min.js"></script>
     <!-- Chart min js -->
+    <script src="js/progressbar.min.js"></script>
+    <!-- Range slider js -->
     <script src="js/rangeslider.min.js"></script>
     <!-- Custom -->
     <script src="js/main.js"></script>
