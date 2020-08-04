@@ -103,6 +103,10 @@ $(function () {
 
   // Initialize sliders
   initializeSliders();
+
+  $('#income').on('keyup', function () {
+    updateChart();
+  });
 });
 
 /******************** Functions ********************/
@@ -195,7 +199,8 @@ function calculateData() {
 
   for (let i = 1; i <= yearsDifference; i++) {
     // calculate estimated balance
-    const estimatedBalanceYear = income * contribution * i * (rateOfReturn + 1);
+    const estimateValue = income * contribution * i;
+    const estimatedBalanceYear = estimateValue + rateOfReturn * estimateValue;
     estimatedBalanceData.push(
       getDataWithYear(yearNow + i, estimatedBalanceYear)
     );
