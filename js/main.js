@@ -17,12 +17,11 @@ const data = {
   // labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
   datasets: [
     {
-      label: 'Estimated Balance',
+      label: 'Other Assets',
       data: [],
-      backgroundColor: getGradientColor('#00c200', '#C0FBC0'),
+      backgroundColor: getGradientColor('#00bae9', '#B4EEFC'),
       borderWidth: 0,
       borderColor: 'transparent',
-      order: 3,
     },
     {
       label: 'Social Security',
@@ -30,15 +29,14 @@ const data = {
       backgroundColor: getGradientColor('#ffc200', '#FFEEB8'),
       borderWidth: 0,
       borderColor: 'transparent',
-      order: 2,
     },
+
     {
-      label: 'Other Assets',
+      label: 'Estimated Balance',
       data: [],
-      backgroundColor: getGradientColor('#00bae9', '#B4EEFC'),
+      backgroundColor: getGradientColor('#00c200', '#C0FBC0'),
       borderWidth: 0,
       borderColor: 'transparent',
-      order: 1,
     },
   ],
 };
@@ -58,7 +56,12 @@ const chartOptions = {
     },
     tooltips: {
       mode: 'index',
+      intersect: true,
+      itemSort: function (a, b) {
+        return b.datasetIndex - a.datasetIndex;
+      },
     },
+
     hover: {
       mode: 'index',
     },
@@ -135,8 +138,6 @@ function calculateData() {
   const rateOfReturn = $('input#rateOfReturn').val() / 100;
   const lifeExpectancy = $('input#lifeExpectancy').val();
 
-  console.log(rateOfReturn);
-
   const yearsDifference = retirementAge - age;
   const estimatedBalanceData = [];
   const socialSecurityData = [];
@@ -165,7 +166,7 @@ function calculateData() {
     otherAssetsData.push(getDataWithYear(yearNow + i, otherAssets));
   }
 
-  data.datasets[0].data = estimatedBalanceData;
+  data.datasets[0].data = otherAssetsData;
   data.datasets[1].data = socialSecurityData;
-  data.datasets[2].data = otherAssetsData;
+  data.datasets[2].data = estimatedBalanceData;
 }
