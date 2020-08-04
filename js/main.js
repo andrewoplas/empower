@@ -22,6 +22,7 @@ const data = {
       backgroundColor: getGradientColor('#00c200', '#C0FBC0'),
       borderWidth: 0,
       borderColor: 'transparent',
+      order: 3,
     },
     {
       label: 'Social Security',
@@ -29,6 +30,7 @@ const data = {
       backgroundColor: getGradientColor('#ffc200', '#FFEEB8'),
       borderWidth: 0,
       borderColor: 'transparent',
+      order: 2,
     },
     {
       label: 'Other Assets',
@@ -36,6 +38,7 @@ const data = {
       backgroundColor: getGradientColor('#00bae9', '#B4EEFC'),
       borderWidth: 0,
       borderColor: 'transparent',
+      order: 1,
     },
   ],
 };
@@ -56,17 +59,20 @@ const chartOptions = {
     tooltips: {
       mode: 'index',
     },
+    hover: {
+      mode: 'index',
+    },
     scales: {
       yAxes: [
         {
           stacked: true,
-          gridLines: { display: false, drawBorder: false },
+          gridLines: { display: false },
           ticks: { display: false },
         },
       ],
       xAxes: [
         {
-          gridLines: { display: false, drawBorder: false },
+          gridLines: { display: false },
           type: 'time',
           time: {
             unit: 'year',
