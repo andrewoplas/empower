@@ -1,0 +1,85 @@
+// Main css
+
+body {
+  @extend .body_font;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #444444;
+}
+a {
+  transition: 0.4s;
+}
+a:hover {
+  text-decoration: none;
+  color: #364bab;
+}
+
+a:focus,
+a:active,
+button:focus,
+button:active {
+  outline: none;
+}
+.section__padding {
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.section__wrapper {
+  background-color: #fff;
+  padding: 28px 35px;
+}
+.em__shadow {
+  box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.038844);
+}
+.section__wrapper {
+  border: 1px solid #f2f2f2;
+}
+.header .bsnav,
+.container-fluid {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+/* HEADER */
+.header .logo {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.header .logo img {
+  max-width: 120px;
+}
+/* HERO */
+
+// Tab content
+.performance__wrapper {
+  margin-bottom: 100px;
+}
+.performance__wrapper .section__wrapper {
+  min-height: 500px;
+}
+.hero__tab.nav-pills .nav-link {
+  border: 1px solid transparent;
+  color: #444;
+}
+.hero__tab.nav-pills .nav-link.active,
+.hero__tab.nav-pills .show > .nav-link {
+  color: #364bab;
+  background: transparent;
+  border: 1px solid #364bab;
+  font-weight: 800;
+}
+
+.retirement__head {
+  background: #f7f9ff;
+  padding: 20px;
+}
+.retirement__footer {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #f2f2f2;
+}
+.right__chart {
+  padding: 50px 30px;
+}
