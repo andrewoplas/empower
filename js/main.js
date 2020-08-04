@@ -129,6 +129,8 @@ function calculateData() {
   const rateOfReturn = $('input#rateOfReturn').val() / 100;
   const lifeExpectancy = $('input#lifeExpectancy').val();
 
+  console.log(rateOfReturn);
+
   const yearsDifference = retirementAge - age;
   const estimatedBalanceData = [];
   const socialSecurityData = [];
@@ -144,7 +146,7 @@ function calculateData() {
 
   for (let i = 1; i <= yearsDifference; i++) {
     // calculate estimated balance
-    const estimatedBalanceYear = income * contribution * i + rateOfReturn;
+    const estimatedBalanceYear = income * contribution * i * (rateOfReturn + 1);
     estimatedBalanceData.push(
       getDataWithYear(yearNow + i, estimatedBalanceYear)
     );
