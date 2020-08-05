@@ -1,7 +1,7 @@
 /******************** Variables ********************/
 
 // Variables
-let isCollapsed = true;
+let isCollapsed = false;
 
 // Elements
 const chartElement = $('#line-stack-chart');
@@ -215,7 +215,8 @@ function calculateData() {
   for (let i = 1; i <= yearsDifference; i++) {
     // calculate estimated balance
     const estimateValue = income * contribution * i;
-    const estimatedBalanceYear = estimateValue + rateOfReturn * estimateValue + 1000000;
+    const estimatedBalanceYear =
+      estimateValue + rateOfReturn * estimateValue + 1000000;
     estimatedBalanceData.push(
       getDataWithYear(yearNow + i, estimatedBalanceYear)
     );
@@ -268,15 +269,17 @@ function formatCurrency(value) {
 
 function toggleCollapse() {
   if (isCollapsed) {
-    $('.retirement__head__main .collapsible').fadeIn(200);
-    $('.toggleCollapse').text(
-      'Retirement age 67, 7% rate of return, 2% employer match'
-    );
-    $('.401k__calculator').fadeOut(200);
+    $('.401k__calculator').fadeOut(200, function () {
+      $('.toggleCollapse').text(
+        'Retirement age 67, 7% rate of return, 2% employer match'
+      );
+      $('.retirement__head__main .collapsible').fadeIn(200);
+    });
   } else {
-    $('.retirement__head__main .collapsible').fadeOut(200);
-    $('.toggleCollapse').text('Close');
-    $('.401k__calculator').fadeIn(200);
+    $('.retirement__head__main .collapsible').fadeOut(300, function () {
+      $('.toggleCollapse').text('Close');
+      $('.401k__calculator').fadeIn(200);
+    });
   }
 
   isCollapsed = !isCollapsed;
