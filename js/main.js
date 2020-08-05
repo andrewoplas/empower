@@ -148,7 +148,7 @@ function initializeScore() {
     color: 'url(#gradient)',
     // This has to be the same size as the maximum width to
     // prevent clipping
-    strokeWidth: 6,
+    strokeWidth: 10,
     trailColor: '#eee',
     trailWidth: 6,
     easing: 'easeInOut',

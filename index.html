@@ -19,18 +19,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
     <style type="text/css">
+      .header {background: #FFFFFF;
+border: 1px solid #E9E9E9;
+box-shadow: 0 2px 16px 0 rgba(0,0,0,0.04);}
       .rangeslider__handle:after {display: none;}
       .rangeslider__handle {background: #364BAB;}
       .slider-container {position: relative; width: 160px;}
       .rangeslider {width: 70%;}
       .slider-container .number {position: absolute; top: 28px; right: -28px; font-size: 24px; font-weight: 300; width: 60px; text-align: left;}
       .form-label {font-size: 16px !important;}
-      .number-value {font-size: 28px;}
+      .number-value {font-size: 34px;}
       .retirement__footer {padding: 40px; margin-top: 10px;}
       .retirement__head {padding: 20px 40px 20px 40px; border-top: 1px solid #EBEBEB;}
       .retirement__head__head {margin-bottom: 10px;}
       .header .bsnav {max-width: 98%; padding: 0 1%;}
-      .right-sidebar {background: #FFFFFF; padding: 34px; 0 0 0;
+      .right-sidebar {background: #FFFFFF; padding: 34px 0 0 0;
 border: 1px solid #F2F2F2;
 box-shadow: 0 10px 16px 0 rgba(0,0,0,0.04);}
       .subheading {
@@ -42,9 +45,9 @@ letter-spacing: -0.33px;}
     padding: .2rem 1rem;
 }
 .nav {margin-top: 38px;}
-.hero {max-width: 1460px; margin: auto;}
+.hero {max-width: 1460px; margin: 80px auto 0 auto;}
 .score-label {line-height: 0;}
-.score-value {font-size: 60px;}
+.score-value {font-size: 60px; line-height: 80px;}
     </style>
   </head>
   <body>
@@ -103,16 +106,16 @@ letter-spacing: -0.33px;}
       <div class="navbar"></div>
     </div>
     <!-- End header -->
-    <div class="hero">
-    <h3 style="font-weight: 300 !important; line-height: 20px; margin-top: 50px;">Welcome back, Sean!</h3>
-                  <p style="font-size: 20px; color: #BEBEBE; letter-spacing: -0.33px; font-weight: 300;">Here is a the latest snapshot of your retirement income</p>
-</div>
-
+    
     <!-- Hero section Start -->
-    <section class="section__padding">
+    <section class="section__padding" style="margin-top: -20px;">
       <div class="container-fluid">
         <div class="row">
           <div class="col">
+            <div class="hero">
+    <h3 style="font-weight: 300 !important; line-height: 20px; margin-top: 50px;">Welcome back, Sean!</h3>
+                  <p style="font-size: 20px; color: #BEBEBE; letter-spacing: -0.33px; font-weight: 300;">Here is a the latest snapshot of your retirement income</p>
+</div>
             <ul
               class="nav nav-pills hero__tab mb-3"
               id="pills-tab"
@@ -303,7 +306,7 @@ letter-spacing: -0.33px;}
                               </div>
                               <div class="col" style="text-align: right;">
                                 <span class="form-label">Estimated balance at retirement</span>
-                                <h2 class="number-value estimated-balance-at-retirement">
+                                <h2 class="number-value estimated-balance-at-retirement" style="opacity: .4;">
                                   $1,388,990
                                 </h2>
                               </div>
@@ -314,6 +317,7 @@ letter-spacing: -0.33px;}
                             style="
                               text-align: center;
                               position: relative;
+                              margin-top: -20px;
                               margin-left: -10px;
                             "
                           >
