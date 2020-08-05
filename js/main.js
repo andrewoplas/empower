@@ -10,10 +10,10 @@ const context = document.getElementById('line-stack-chart').getContext('2d');
 // Fixed values
 const socialSecurity = 1200;
 const healthcare = 960;
-const otherAssets = 50000;
+const otherAssets = 100000;
 
 // Inputs
-const age = 27;
+const age = 20;
 
 /******************** Chart Configurations ********************/
 const lineChartData = {
@@ -215,7 +215,7 @@ function calculateData() {
   for (let i = 1; i <= yearsDifference; i++) {
     // calculate estimated balance
     const estimateValue = income * contribution * i;
-    const estimatedBalanceYear = estimateValue + rateOfReturn * estimateValue;
+    const estimatedBalanceYear = estimateValue + rateOfReturn * estimateValue + 1000000;
     estimatedBalanceData.push(
       getDataWithYear(yearNow + i, estimatedBalanceYear)
     );
@@ -243,7 +243,7 @@ function calculateData() {
   if (score < 0) score = 0;
   window.score.animate(score);
 
-  updateTotalEstimatedTimeBalance(calculation1);
+  updateTotalEstimatedTimeBalance(calculation1 + 1000000);
 
   lineChartData.datasets[0].data = otherAssetsData;
   lineChartData.datasets[1].data = socialSecurityData;

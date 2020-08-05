@@ -16,6 +16,36 @@
     <link rel="stylesheet" href="css/bsnav.min.css" />
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <style type="text/css">
+      .rangeslider__handle:after {display: none;}
+      .rangeslider__handle {background: #364BAB;}
+      .slider-container {position: relative; width: 160px;}
+      .rangeslider {width: 70%;}
+      .slider-container .number {position: absolute; top: 28px; right: -28px; font-size: 24px; font-weight: 300; width: 60px; text-align: left;}
+      .form-label {font-size: 16px !important;}
+      .number-value {font-size: 28px;}
+      .retirement__footer {padding: 40px; margin-top: 10px;}
+      .retirement__head {padding: 20px 40px 20px 40px; border-top: 1px solid #EBEBEB;}
+      .retirement__head__head {margin-bottom: 10px;}
+      .header .bsnav {max-width: 98%; padding: 0 1%;}
+      .right-sidebar {background: #FFFFFF; padding: 34px; 0 0 0;
+border: 1px solid #F2F2F2;
+box-shadow: 0 10px 16px 0 rgba(0,0,0,0.04);}
+      .subheading {
+font-size: 20px;
+color: #444444;
+letter-spacing: -0.33px;}
+      .nav-link {
+    display: block;
+    padding: .2rem 1rem;
+}
+.nav {margin-top: 38px;}
+.hero {max-width: 1460px; margin: auto;}
+.score-label {line-height: 0;}
+.score-value {font-size: 60px;}
+    </style>
   </head>
   <body>
     <!-- Start header -->
@@ -73,6 +103,10 @@
       <div class="navbar"></div>
     </div>
     <!-- End header -->
+    <div class="hero">
+    <h3 style="font-weight: 300 !important; line-height: 20px; margin-top: 50px;">Welcome back, Sean!</h3>
+                  <p style="font-size: 20px; color: #BEBEBE; letter-spacing: -0.33px; font-weight: 300;">Here is a the latest snapshot of your retirement income</p>
+</div>
 
     <!-- Hero section Start -->
     <section class="section__padding">
@@ -141,10 +175,9 @@
                 aria-labelledby="pills-home-tab"
               >
                 <div class="tab__content">
-                  <h3>Sean’s retirement income</h3>
 
                   <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                       <div class="retirement__wrapper">
                         <div class="retirement__head">
                           <div class="retirement__head__head">
@@ -162,19 +195,11 @@
                               </div>
                             </div>
                           </div>
-                          <div
-                            class="401k__calculator"
-                            style="
-                              min-height: 200px;
-                              background: #ffffff;
-                              margin-bottom: 20px;
-                              padding: 10px;
-                            "
-                          >
+                          <div class="401k__calculator">
                             <div class="row">
                               <div class="col-md-3">
-                                <label for="income">Income</label>
-                                <input
+                                <label for="income" style="display: block;">Income</label>
+                                <input style="font-size: 24px; max-width: 200px; border: 1px solid #D0D0D0;" 
                                   type="text"
                                   id="income"
                                   value="$140,000"
@@ -189,10 +214,10 @@
                                     min="1"
                                     max="19.5"
                                     step="0.5"
-                                    value="1"
+                                    value="4"
                                   />
-                                  <p class="mt-2 mb-0">
-                                    Value: <b class="value"></b>%
+                                  <p class="number">
+                                    <b class="value"></b>%
                                   </p>
                                 </div>
                                 <div class="mt-4 slider-container">
@@ -206,16 +231,14 @@
                                     max="100"
                                     value="67"
                                   />
-                                  <p class="mt-2 mb-0">
-                                    Value: <b class="value"></b>
+                                  <p class="number">
+                                    <b class="value"></b>
                                   </p>
                                 </div>
                               </div>
                               <div class="col-md-3">
                                 <div class="slider-container">
-                                  <label for="employerMatch"
-                                    >Employer Match</label
-                                  >
+                                  <label for="employerMatch">Employer Match</label>
                                   <input
                                     type="range"
                                     id="employerMatch"
@@ -224,8 +247,8 @@
                                     value="0"
                                     step="0.5"
                                   />
-                                  <p class="mt-2 mb-0">
-                                    Value: <b class="value"></b>%
+                                  <p class="number">
+                                    <b class="value"></b>%
                                   </p>
                                 </div>
                                 <div class="mt-4 slider-container">
@@ -237,14 +260,14 @@
                                     id="lifeExpectancy"
                                     min="1"
                                     max="100"
-                                    value="94"
+                                    value="85"
                                   />
-                                  <p class="mt-2 mb-0">
-                                    Value: <b class="value"></b>
+                                  <p class="number">
+                                    <b class="value"></b>
                                   </p>
                                 </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="number">
                                 <div class="slider-container">
                                   <label for="rateOfReturn"
                                     >Rate Of Return</label
@@ -254,11 +277,11 @@
                                     id="rateOfReturn"
                                     min="1"
                                     max="20"
-                                    value="1"
+                                    value="7"
                                     step="0.5"
                                   />
-                                  <p class="mt-2 mb-0">
-                                    Value: <b class="value"></b>%
+                                  <p class="number">
+                                    <b class="value"></b>%
                                   </p>
                                 </div>
                               </div>
@@ -268,19 +291,19 @@
                             <div class="row">
                               <div class="col-md-3">
                                 <div class="collapsible" style="display: none;">
-                                  <p>Current balance</p>
-                                  <h2>$37,101.56</h2>
+                                  <span class="form-label">Current balance</spans>
+                                  <h2 class="number-value">$37,101.56</h2>
                                 </div>
                               </div>
                               <div class="col-md-3">
                                 <div class="collapsible" style="display: none;">
-                                  <p>Contribution rate</p>
-                                  <h2 class="contribution-rate">1%</h2>
+                                  <span class="form-label">Contribution rate</span>
+                                  <h2 class="number-value contribution-rate">4%</h2>
                                 </div>
                               </div>
-                              <div class="col">
-                                <p>Estimated balance at retirement</p>
-                                <h2 class="estimated-balance-at-retirement">
+                              <div class="col" style="text-align: right;">
+                                <span class="form-label">Estimated balance at retirement</span>
+                                <h2 class="number-value estimated-balance-at-retirement">
                                   $1,388,990
                                 </h2>
                               </div>
@@ -289,9 +312,9 @@
                           <div
                             class="retirement__chart"
                             style="
-                              height: 200px;
                               text-align: center;
                               position: relative;
+                              margin-left: -10px;
                             "
                           >
                             <canvas
@@ -304,28 +327,28 @@
                           <div class="row">
                             <div class="col">
                               <h4 class="subheading">
-                                Other estimated income/expenses
+                                Other income/expenses
                               </h4>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md-3">
-                              <p>Social Security</p>
+                              <span class="form-label">Social Security</span>
                               <h5>$1200/month</h5>
                             </div>
                             <div class="col-md-3">
-                              <p>Healthcare costs</p>
-                              <h5>$960month</h5>
+                              <span class="form-label">Healthcare costs</span>
+                              <h5>$960/month</h5>
                             </div>
                             <div class="col-md-3">
-                              <p>Other assets</p>
-                              <h5>$0</h5>
+                              <span class="form-label">Other assets</span>
+                              <h5>$100,000</h5>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3 right-sidebar">
                       <div
                         class="retirement__score"
                         style="
@@ -346,12 +369,12 @@
                           "
                         ></div>
                       </div>
-                      <div class="right__chart em__shadow text-center">
-                        <p>
-                          You’re in good shape. Your average income in
+                      <div class="text-center">
+                        <p style="font-family: 'Merriweather', serif; font-size: 18px; margin-top: 10px;">
+                          You’re in <a href="#"> good shape</a>. Your average income in
                           retirement is expected to exceed spending goals.
                         </p>
-                        <button>Improve score</button>
+                        <button style="background: #364BAB; border: none; color: #ffffff; padding: 4px 12px;">Improve score</button>
                       </div>
                     </div>
                   </div>
