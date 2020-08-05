@@ -121,6 +121,10 @@ function initializeSliders() {
     onSlide: function (position, value) {
       const slider = $(this.$element);
       slider.parents('.slider-container').find('b.value').text(value);
+
+      if (slider.attr('id') === 'contribution') {
+        updateContributionRate(value);
+      }
     },
     onSlideEnd: function (position, value) {
       updateChart();
@@ -177,7 +181,9 @@ function getGradientColor(color1, color2) {
 }
 
 function calculateData() {
-  const income = $('input#income').val();
+  let income = $('input#income').val();
+  income = income.replace(/,/g, '').replace(/\$/g, '');
+
   const contribution = $('input#contribution').val() / 100;
   const retirementAge = $('input#retirementAge').val();
   const employerMatch = $('input#employerMatch').val() / 100;
@@ -228,7 +234,25 @@ function calculateData() {
   if (score < 0) score = 0;
   window.score.animate(score);
 
+  updateTotalEstimatedTimeBalance(calculation1);
+
   lineChartData.datasets[0].data = otherAssetsData;
   lineChartData.datasets[1].data = socialSecurityData;
   lineChartData.datasets[2].data = estimatedBalanceData;
+}
+
+function updateTotalEstimatedTimeBalance(value) {
+  $('.estimated-balance-at-retirement').text(formatCurrency(value));
+}
+
+function updateContributionRate(value) {
+  $('.contribution-rate').text(value + '%');
+}
+
+function formatCurrency(value) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0,
+  }).format(value);
 }
