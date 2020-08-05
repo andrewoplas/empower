@@ -1,5 +1,8 @@
 /******************** Variables ********************/
 
+// Variables
+let isCollapsed = true;
+
 // Elements
 const chartElement = $('#line-stack-chart');
 const context = document.getElementById('line-stack-chart').getContext('2d');
@@ -104,8 +107,14 @@ $(function () {
   // Initialize sliders
   initializeSliders();
 
+  // Income listsner
   $('#income').on('keyup', function () {
     updateChart();
+  });
+
+  // Collapse / expand
+  $('.toggleCollapse').click(function () {
+    toggleCollapse();
   });
 });
 
@@ -255,4 +264,20 @@ function formatCurrency(value) {
     currency: 'USD',
     minimumFractionDigits: 0,
   }).format(value);
+}
+
+function toggleCollapse() {
+  if (isCollapsed) {
+    $('.retirement__head__main .collapsible').fadeIn(200);
+    $('.toggleCollapse').text(
+      'Retirement age 67, 7% rate of return, 2% employer match'
+    );
+    $('.401k__calculator').fadeOut(200);
+  } else {
+    $('.retirement__head__main .collapsible').fadeOut(200);
+    $('.toggleCollapse').text('Close');
+    $('.401k__calculator').fadeIn(200);
+  }
+
+  isCollapsed = !isCollapsed;
 }
